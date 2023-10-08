@@ -1,0 +1,34 @@
+@use "../base/variables" as v;
+
+.m-product-card {
+  width: 600px;
+  height: 450px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  background-color: v.$pure-white;
+  border-radius: 0.625rem;
+
+  /* ========== img ========== */
+  &__img-container {
+    height: 100%;
+    background-color: red;
+  }
+  &__img {
+    height: 100%;
+  }
+
+  /* ========== description ========== */
+  &__description-container {
+    height: 100%;
+    padding: 32px;
+
+    background-color: v.$pure-white;
+  }
+  &__subheading {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: v.$font-secundary;
+    text-transform: uppercase;
+  }
+}
