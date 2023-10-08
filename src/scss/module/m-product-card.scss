@@ -21,12 +21,12 @@
   /* ========== description ========== */
   &__description-container {
     height: 100%;
-    padding: 32px;
+    padding: 2rem;
 
     background-color: v.$pure-white;
   }
   &__subheading {
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 5px;
     font-weight: 400;
     text-transform: uppercase;
@@ -42,6 +42,23 @@
   &__txt {
     font-family: v.$font-secundary;
     color: v.$aurometal-saurus;
-    line-height: 23px;
+    line-height: 1.4375rem;
+  }
+
+  /* ========== price ========== */
+  &__price-container {
+    display: flex;
+    align-items: center;
+  }
+  &__discount-price {
+    color: v.$deep-aquamarine;
+    font-size: 2rem;
+  }
+  &__original-price {
+    margin-left: 19px;
+
+    font-size: 0.8125rem;
+    font-family: v.$font-secundary;
+    color: v.$aurometal-saurus;
   }
 }
