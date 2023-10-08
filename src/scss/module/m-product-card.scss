@@ -124,6 +124,9 @@
   &__btn-add-to-cart {
     width: 100%;
     height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     font-size: 14px;
     font-family: v.$font-secundary;
@@ -131,5 +134,8 @@
     border: none;
     border-radius: 8px;
     background-color: v.$deep-aquamarine;
+  }
+  &__btn-icon-cart {
+    margin-right: 11.71px;
   }
 }
