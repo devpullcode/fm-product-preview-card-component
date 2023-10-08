@@ -27,8 +27,21 @@
   }
   &__subheading {
     font-size: 12px;
+    letter-spacing: 5px;
     font-weight: 400;
-    font-family: v.$font-secundary;
     text-transform: uppercase;
+    font-family: v.$font-secundary;
+    color: v.$aurometal-saurus;
+  }
+  &__title {
+    text-transform: capitalize;
+    line-height: 1;
+    font-size: 2rem;
+    text-wrap: balance;
+  }
+  &__txt {
+    font-family: v.$font-secundary;
+    color: v.$aurometal-saurus;
+    line-height: 23px;
   }
 }
