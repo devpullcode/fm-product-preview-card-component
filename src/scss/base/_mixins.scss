@@ -1,9 +1,9 @@
-@use 'variables' as v;
-@use 'functions' as f;
+@use "variables" as v;
+@use "functions" as f;
 
 /* ========== forms ========== */
 @mixin remove-spin-input() {
-  input[type='number'] {
+  input[type="number"] {
     // Estilo para los botones de incremento y decremento en Firefox
     -moz-appearance: textfield;
     appearance: textfield;
@@ -19,12 +19,20 @@
 }
 
 /* ========== Mixins breakpoints ========== */
-@mixin media($breakpoint-name) {
+@mixin media($breakpoint-name, $approach) {
   @if map-has-key(v.$breakpoint-values, $breakpoint-name) {
     $breakpoint-value: map-get(v.$breakpoint-values, $breakpoint-name);
 
-    @media (min-width: $breakpoint-value) {
-      @content;
+    @if $approach == "mobile-first" {
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+    } @else if($approach == "desktop-first") {
+      @media (max-width: $breakpoint-value) {
+        @content;
+      }
+    } @else {
+      @warn 'Cannot find approach '#{$approach}' in variable $breakpoint-values.';
     }
   } @else {
     @warn 'Cannot find breakpoint '#{$breakpoint-name}' in variable $breakpoint-values.';

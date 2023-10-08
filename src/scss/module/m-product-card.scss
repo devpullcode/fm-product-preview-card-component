@@ -1,21 +1,50 @@
 @use "../base/variables" as v;
+@use "../base/mixins" as m;
 
 .m-product-card {
   width: 600px;
-  height: 450px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
   background-color: v.$pure-white;
   border-radius: 0.625rem;
+  overflow: hidden;
+
+  @include m.media("md", v.$media-query-approach) {
+    width: 343px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
 
   /* ========== img ========== */
   &__img-container {
     height: 100%;
-    background-color: red;
-  }
-  &__img {
-    height: 100%;
+
+    /* Fondo por defecto para navegadores que no soportan webp o avif */
+    background: v.$pure-white url("../img/image-product-desktop.jpg") no-repeat center top / cover;
+    /* Fondo para navegadores que soportan webp */
+    @supports (background-image: url("data:image/webp;base64,UklGRhIAAABXRUJQVlA4TBEAAAAvAAAAEAcQERGIiP4HAA==")) {
+      background: v.$pure-white url("../img/image-product-desktop.webp") no-repeat center top / cover;
+    }
+    /* Fondo para navegadores que soportan avif (en el futuro, si Safari lo soporta) */
+    @supports (background-image: url("data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGFzcAAAAAAAQAAACryb3ZhUAAAAA=")) {
+      background: v.$pure-white url("../img/image-product-desktop.avif") no-repeat center top / cover;
+    }
+
+    @include m.media("md", v.$media-query-approach) {
+      height: 240px;
+
+      /* Fondo por defecto para navegadores que no soportan webp o avif */
+      background: v.$pure-white url("../img/image-product-mobile.jpg") no-repeat center top / cover;
+      /* Fondo para navegadores que soportan webp */
+      @supports (background-image: url("data:image/webp;base64,UklGRhIAAABXRUJQVlA4TBEAAAAvAAAAEAcQERGIiP4HAA==")) {
+        background: v.$pure-white url("../img/image-product-mobile.webp") no-repeat center top / cover;
+      }
+      /* Fondo para navegadores que soportan avif (en el futuro, si Safari lo soporta) */
+      @supports (background-image: url("data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAG1pZjEAAACgbWV0YQAAAAAAAAAOcGFzcAAAAAAAQAAACryb3ZhUAAAAA=")) {
+        background: v.$pure-white url("../img/image-product-mobile.avif") no-repeat center top / cover;
+      }
+    }
   }
 
   /* ========== description ========== */
@@ -23,42 +52,84 @@
     height: 100%;
     padding: 2rem;
 
-    background-color: v.$pure-white;
+    @include m.media("md", v.$media-query-approach) {
+      padding: 1.5rem;
+    }
   }
   &__subheading {
+    margin-bottom: 20px;
+
     font-size: 0.75rem;
     letter-spacing: 5px;
     font-weight: 400;
     text-transform: uppercase;
     font-family: v.$font-secundary;
     color: v.$aurometal-saurus;
+
+    @include m.media("md", v.$media-query-approach) {
+      margin-bottom: 12px;
+    }
   }
   &__title {
-    text-transform: capitalize;
-    line-height: 1;
+    margin-bottom: 24px;
+
     font-size: 2rem;
+    line-height: 1;
+    text-transform: capitalize;
     text-wrap: balance;
+
+    @include m.media("md", v.$media-query-approach) {
+      margin-bottom: 16px;
+    }
   }
   &__txt {
+    margin-bottom: 29px;
+
+    font-size: 14px;
+    line-height: 23px;
     font-family: v.$font-secundary;
     color: v.$aurometal-saurus;
-    line-height: 1.4375rem;
+
+    @include m.media("md", v.$media-query-approach) {
+      margin-bottom: 24px;
+    }
   }
 
   /* ========== price ========== */
   &__price-container {
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
+
+    line-height: 1;
+
+    @include m.media("md", v.$media-query-approach) {
+      margin-bottom: 20px;
+    }
   }
   &__discount-price {
-    color: v.$deep-aquamarine;
     font-size: 2rem;
+    color: v.$deep-aquamarine;
   }
   &__original-price {
     margin-left: 19px;
 
     font-size: 0.8125rem;
+    text-decoration: line-through;
     font-family: v.$font-secundary;
     color: v.$aurometal-saurus;
+  }
+
+  /* ========== btn ========== */
+  &__btn-add-to-cart {
+    width: 100%;
+    height: 48px;
+
+    font-size: 14px;
+    font-family: v.$font-secundary;
+    color: v.$pure-white;
+    border: none;
+    border-radius: 8px;
+    background-color: v.$deep-aquamarine;
   }
 }
